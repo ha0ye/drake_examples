@@ -1,0 +1,50 @@
+---
+title: "Results"
+author: "Hao Ye"
+date: "`r Sys.Date()`"
+output: github_document
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(drake)
+library(tidyverse)
+```
+
+## Read in the results
+
+```{r load results}
+cache <- storr::storr_rds(".drake")
+
+# find results objects
+results_pattern <- "^results_"
+cache_names <- cache$list()
+results_names <- grep(results_pattern, cache_names, value = TRUE)
+
+# load results
+loadd(list = results_names)
+```
+
+## Process results together
+
+Combine the outputs in each results object using `bind_rows()`, and wrap this all together using `purrr::map_dfr()`:
+
+```{r, warning = FALSE}
+full_results <- purrr::map_dfr(mget(results_names), bind_rows)
+
+print(full_results)
+```
+
+## Plot
+
+For each level of `method`, produce a histogram for `value`:
+    
+```{r}
+ggplot(data = full_results, 
+       mapping = aes(x = value, fill = method)) + 
+    facet_wrap(~method, scales = "free_y") + 
+    geom_histogram(position = "stack") + 
+    theme_bw()
+```
+
