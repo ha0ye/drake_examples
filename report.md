@@ -32,15 +32,18 @@ print(full_results)
     ## 1   7208 object.size   mtcars
     ## 2   7256 object.size     iris
     ## 3   1264 object.size     Nile
-    ## 4  23024 object.size sunspots
-    ## 5     11        NCOL   mtcars
-    ## 6      5        NCOL     iris
-    ## 7      1        NCOL     Nile
-    ## 8      1        NCOL sunspots
-    ## 9     32        NROW   mtcars
-    ## 10   150        NROW     iris
-    ## 11   100        NROW     Nile
-    ## 12  2820        NROW sunspots
+    ## 4   5232 object.size   Orange
+    ## 5  23024 object.size sunspots
+    ## 6     11        NCOL   mtcars
+    ## 7      5        NCOL     iris
+    ## 8      1        NCOL     Nile
+    ## 9      3        NCOL   Orange
+    ## 10     1        NCOL sunspots
+    ## 11    32        NROW   mtcars
+    ## 12   150        NROW     iris
+    ## 13   100        NROW     Nile
+    ## 14    35        NROW   Orange
+    ## 15  2820        NROW sunspots
 
 ## Plot
 
